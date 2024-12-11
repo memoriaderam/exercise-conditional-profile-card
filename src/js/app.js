@@ -33,9 +33,9 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+          <h1>${variables.name}  ${variables.lastName}</h1>
+          <h2>${variables.role}</h2>
+          <h3>${variables.country} ${variables.city} </h3>
           <ul class="position-right">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
@@ -60,21 +60,22 @@ window.onload = function() {
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
-    twitter: null,
-    github: null,
-    linkedin: null,
-    instagram: null,
-    name: null,
-    lastName: null,
-    role: null,
-    country: null,
-    city: null
+    twitter: "twiter",
+    github: "github",
+    linkedin: "linkedin",
+    instagram: "instagram",
+    name: "Name",
+    lastName: "Last Name",
+    role: "role",
+    country: "country",
+    city: "city"
   };
   render(window.variables); // render the card for the first time
 
   document.querySelectorAll(".picker").forEach(function(elm) {
     elm.addEventListener("change", function(e) {
       // <- add a listener to every input
+
       const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
       let values = {};
       values[attribute] =
